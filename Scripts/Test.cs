@@ -8,6 +8,11 @@ public class Test : MonoBehaviour
 {
 
     Rigidbody rb;
+    public GameObject winText;
+    float xInput;
+    float zInput;
+
+    public float speed;
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +39,11 @@ public class Test : MonoBehaviour
         {
             SceneManager.LoadScene("Level2");
         }
+
+        xInput = Input.GetAxis("Horizontal");
+        zInput = Input.GetAxis("Vertical");
+
+        rb.AddForce(xInput * speed, 0, zInput * speed);
     }
 
     private void OnMouseDown()
@@ -47,6 +57,8 @@ public class Test : MonoBehaviour
         {
             //Destroy(gameObject);
             Destroy(collision.gameObject);
+
+            winText.SetActive(true);
         }
     }
 }
