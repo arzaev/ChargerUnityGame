@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Threading;
 using UnityEngine.SceneManagement;
+using System;
 
 public class Test : MonoBehaviour
 {
 
     Rigidbody rb;
-    public GameObject winText;
+    
     float xInput;
     float zInput;
 
@@ -18,7 +19,6 @@ public class Test : MonoBehaviour
     void Start()
     {
         //Destroy(gameObject, 3f);
-
         rb = GetComponent<Rigidbody>();
         
         
@@ -29,7 +29,7 @@ public class Test : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            //rb.AddForce(Vector3.up * 500);
+            rb.AddForce(Vector3.up * 500);
 
         }
 
@@ -37,7 +37,7 @@ public class Test : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.R))
         {
-            SceneManager.LoadScene("Level2");
+            
         }
 
         xInput = Input.GetAxis("Horizontal");
@@ -53,12 +53,23 @@ public class Test : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "Enemy")
-        {
+        //if(collision.gameObject.tag == "Enemy")
+        //{
             //Destroy(gameObject);
-            Destroy(collision.gameObject);
+            //Destroy(collision.gameObject);
 
-            winText.SetActive(true);
-        }
+            
+        //}
+
+        //if (collision.gameObject.tag == "Wall2")
+        //{
+            
+
+            //
+
+        //}
     }
+
+    
+
 }
